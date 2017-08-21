@@ -1,39 +1,23 @@
-import React from 'react';
-import { StyleSheet, Text, AppRegistry, View } from 'react-native';
+import React, { Component } from 'react';
+import { Alert, AppRegistry, FlatList, StyleSheet, Text, View } from 'react-native';
 
-const contacts = {[
-    {
-        id: 1,
-        firstName: "Amy",
-        lastName: "Taylor",
-        title: "CEO",
-        phone: "617-123-4567",
-        mobilePhone: "617-987-6543",
-        email: "amy@fakemail.com",
-        picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/amy_taylor.jpg"
-    },
-    {
-        id: 2,
-        firstName: "Anup",
-        lastName: "Gupta",
-        title: "VP of Engineering",
-        managerId: 1,
-        managerName: "Amy Taylor",
-        phone: "617-123-4567",
-        mobilePhone: "617-987-6543",
-        email: "anup@fakemail.com",
-        picture: "https://s3-us-west-1.amazonaws.com/sfdc-demo/people/anup_gupta.jpg"
-    }
-};
-
-
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello, Boss!</Text>
-        <Text>Hello, Boss!</Text>
-        <Text>Hello, Boss!</Text>
+        <FlatList
+          data={[
+            {key: '1', firstName: 'Devin', lasName: 'Judi'},
+            {key: '2', firstName: 'Jackson', lasName: 'Michael'},
+            {key: '3', firstName: 'James', lasName: 'Jam'},
+            {key: '4', firstName: 'Joel', lasName: 'Dude'},
+            {key: '5', firstName: 'John', lasName: 'Lenard'},
+            {key: '6', firstName: 'Jillian', lasName: 'Jallien'},
+            {key: '7', firstName: 'Tommy', lasName: 'Thompson'},
+            {key: '8', firstName: 'Julie', lasName: 'Judi'},
+          ]}
+          renderItem={({item}) => <Text style={styles.item} onPress={() => { Alert.alert('You have tapped a name')}}>{item.firstName} {item.lasName}</Text>}
+        />
       </View>
     );
   }
@@ -41,9 +25,12 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+   flex: 1,
+   paddingTop: 22
   },
-});
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
+})

@@ -1,20 +1,17 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
 var _jsxFileName = '/TryOut/App.js';
 
 var _react = require('react');
 
 var _react2 = babelHelpers.interopRequireDefault(_react);
 
-var _reactDom = require('react-dom');
+var _reactNative = require('react-native');
 
-var _reactDom2 = babelHelpers.interopRequireDefault(_reactDom);
-
-var owl = {
-  title: "Excellent Owl",
-  src: "https://s3.amazonaws.com/codecademy-content/courses/React/react_photo-owl.jpg"
-};
-
-var App = function (_React$Component) {
-  babelHelpers.inherits(App, _React$Component);
+var App = function (_Component) {
+  babelHelpers.inherits(App, _Component);
 
   function App() {
     babelHelpers.classCallCheck(this, App);
@@ -25,37 +22,52 @@ var App = function (_React$Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'div',
-        {
-          __source: {
+        _reactNative.View,
+        { style: styles.container, __source: {
             fileName: _jsxFileName,
-            lineNumber: 13
+            lineNumber: 7
           }
         },
-        _react2.default.createElement(
-          'h1',
-          {
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 14
-            }
+        _react2.default.createElement(_reactNative.FlatList, {
+          data: [{ key: '1', firstName: 'Devin', lasName: 'Judi' }, { key: '2', firstName: 'Jackson', lasName: 'Michael' }, { key: '3', firstName: 'James', lasName: 'Jam' }, { key: '4', firstName: 'Joel', lasName: 'Dude' }, { key: '5', firstName: 'John', lasName: 'Lenard' }, { key: '6', firstName: 'Jillian', lasName: 'Jallien' }, { key: '7', firstName: 'Tommy', lasName: 'Thompson' }, { key: '8', firstName: 'Julie', lasName: 'Judi' }],
+          renderItem: function renderItem(_ref) {
+            var item = _ref.item;
+            return _react2.default.createElement(
+              _reactNative.Text,
+              { style: styles.item, onPress: function onPress() {
+                  _reactNative.Alert.alert('ssss');
+                }, __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 19
+                }
+              },
+              item.firstName,
+              ' ',
+              item.lasName
+            );
           },
-          owl.title
-        ),
-        _react2.default.createElement('img', { src: owl.src, alt: owl.title, __source: {
+          __source: {
             fileName: _jsxFileName,
-            lineNumber: 15
+            lineNumber: 8
           }
         })
       );
     }
   }]);
   return App;
-}(_react2.default.Component);
+}(_react.Component);
 
-_reactDom2.default.render(_react2.default.createElement(Owl, {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 22
+exports.default = App;
+
+
+var styles = _reactNative.StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 22
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44
   }
-}), document.getElementById('app'));
+});
